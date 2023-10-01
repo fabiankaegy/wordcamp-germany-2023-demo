@@ -23,7 +23,9 @@
 	},
 	"author": "fabiankaegy",
 	"license": "GPL-2.1-or-later",
-	"dependencies": {},
+	"dependencies": {
+		"@wordpress/icons": "^9.33.0"
+	},
 	"devDependencies": {
 		"@wordpress/scripts": "^26.13.0"
 	}
