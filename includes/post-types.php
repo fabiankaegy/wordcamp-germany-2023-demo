@@ -18,22 +18,47 @@ function register_team_post_types() {
 	register_post_type(
 		'team',
 		[
-			'public'    => true,
-			'labels'    => [
+			'public'        => true,
+			'labels'        => [
 				'name'          => __( 'Team Members', 'wordcamp-germany-2023-demo' ),
 				'menu_name'     => __( 'Team', 'wordcamp-germany-2023-demo' ),
 				'singular_name' => __( 'Team', 'wordcamp-germany-2023-demo' ),
 				'add_new'       => __( 'Add Person', 'wordcamp-germany-2023-demo' ),
 				'edit_item'     => __( 'Edit Person', 'wordcamp-germany-2023-demo' ),
 			],
-			'supports'  => [
+			'supports'      => [
 				'title',
 				'editor',
 				'thumbnail',
 				'custom-fields',
 				'page-attributes',
 			],
-			'menu_icon' => 'dashicons-groups',
+			'template'      => [
+				[
+					'core/columns',
+					[],
+					[
+						[
+							'core/column',
+							[ 'width' => '33.33%' ],
+							[
+								[ 'core/post-featured-image' ],
+							],
+						],
+						[
+							'core/column',
+							[ 'width' => '33.33%' ],
+							[
+								[ 'core/post-title' ],
+								[ 'core/post-terms', [ 'term' => 'position' ] ],
+							],
+						],
+					],
+				],
+			],
+			'template_lock' => 'all',
+			'show_in_rest'  => true,
+			'menu_icon'     => 'dashicons-groups',
 		]
 	);
 }
@@ -59,6 +84,7 @@ function register_position_taxonomy() {
 				'edit_item'     => __( 'Edit Position', 'wordcamp-germany-2023-demo' ),
 			],
 			'show_admin_column' => true,
+			'show_in_rest'      => true,
 			'hierarchical'      => false,
 		]
 	);
