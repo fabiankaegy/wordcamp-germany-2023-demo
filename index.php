@@ -15,4 +15,21 @@
 
 namespace WordCamp\Germany\Demo;
 
+/**
+ * enqueue block editor scripts and styles
+ */
+function enqueue_block_editor_assets() {
+
+	$asset_info = require __DIR__ . '/build/index.asset.php';
+
+	wp_enqueue_script(
+		'wordcamp-germany-2023-demo-editor-script',
+		plugins_url( 'build/index.js', __FILE__ ),
+		$asset_info['dependencies'],
+		$asset_info['version']
+	);
+}
+
+add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue_block_editor_assets' );
+
 require_once __DIR__ . '/includes/post-types.php';
